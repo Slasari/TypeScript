@@ -89,3 +89,79 @@ let persona : {
         sector: "Desarrollo Front-End"
     }
 }
+
+//FUNCIONES
+
+//Que es una funcion? una funcion es una parte del codigo encapsulada que se encarga de realizar una o pocas tareas en especifico.
+
+// La funcion a continuacion se encarga de sumar 2 numeros que recibe por parametros.
+
+function sumar(x:number, y:number): number {
+    let resultado = x + y;
+    console.log(`${x} + ${y} = ${resultado}`)
+    return resultado; 
+};
+
+// Function anonima, utiliza "callback"
+
+let restar = function(x:number, y:number) : number {
+    let resultado = x - y;
+    console.log(`${x} - ${y} = ${resultado}`)
+    return resultado;
+}
+
+let multiplicar: (x: number, y: number) => number
+
+// Forma larga
+multiplicar = function(x, y){
+    let resultado = x * y
+    console.log(`${x} * ${y} = ${resultado}`)
+    return resultado
+}
+// Forma corta
+multiplicar = (x, y) => x * y
+
+
+
+sumar(2,8);
+restar(9,5);
+
+//CLASES
+
+//Que es una clase? una clase es una estructura que posee 2 partes, por una parte contiene datos, y por otra parte posee operaciones para manipular esos datos. pudiendo acceder a ellos de manera rapida y tambien poder modificar su valor. La manera de representar una clase es muy similar a la manera de representar una funcion, es una plantilla(un esqueleto donde desarrollamos todos sus metodos, propiedades, etc.). Una gran ventaja de utilizar clases es que podemos crear una gran estructura de datos y luego dividirla en estructuras de datos mas especificas, por ejemplo podemos tener la clase Vehiculo, y luego dividirla en terrestres, aereos y acuaticos.
+
+//Como crear una clase en TypeScript
+
+//Cuando creamos una clase, no es necesario declarar variables utilizando "var", "let" o "const" ni declarar las funciones, ya que el lenguaje comprende que dentro de las clases estos van a ser los unicos tipos de datos que se van a manejar.
+
+class Rectangulo {
+
+    ancho: number 
+    
+    alto: number
+
+    constructor(ancho:number, alto:number){
+        console.log("constructor(")
+        this.ancho = ancho;
+        this.alto = alto;
+    }
+
+    area(){
+        let resultado = this.ancho * this.alto  //This hace referencia a la instancia en la que se esta invocando al metodo.
+        return resultado
+    }
+    perimetro(){
+        let resultado = this.ancho * 2 + this.alto * 2 
+        return resultado
+    }
+}
+
+let r1 = new Rectangulo(10, 15);
+
+let r2 = new Rectangulo(4, 3);
+
+r1.area() 
+// En este caso, gracias al This, este metodo traera el area de r1
+r2.area()
+// y en este otro caso, traera el area de r2, ya que this hace refencia a la instancia en la cual se esta utilizando el metodo.
+
