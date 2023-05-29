@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc hola.ts"
+    "build": "tsc calculadora.ts"
   },
   "author": "",
   "license": "ISC",
