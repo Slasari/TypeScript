@@ -169,5 +169,7 @@ r2.area()
 r2.alto = 5;
 r2.area()
 
-//mientras que estos datos no sean privados (private) private hace que esa accion no pueda llevarse acabo fuera de la clase. ej: private ancho: number, ahora el ancho no podria modificarse desde fuera de la clase.
+//private: es una palabra clave que hace que esa variable no pueda ser leida u modificada desde fuera de la clase. ej: private ancho: number, ahora el ancho no podria leerse u modificarse desde fuera de la clase.
+
+//readonly: esta palabra clave se asegura de que la variable no pueda recibir cambios una vez reciba su valor inicial.
 
