@@ -161,7 +161,13 @@ let r1 = new Rectangulo(10, 15);
 let r2 = new Rectangulo(4, 3);
 
 r1.area() 
-// En este caso, gracias al This, este metodo traera el area de r1
+// En este caso, gracias al This, este llamado traera el area de r1
 r2.area()
 // y en este otro caso, traera el area de r2, ya que this hace refencia a la instancia en la cual se esta utilizando el metodo.
+
+//los valores de las propiedades de cada instancia se pueden modificar en cualquier momento.
+r2.alto = 5;
+r2.area()
+
+//mientras que estos datos no sean privados (private) private hace que esa accion no pueda llevarse acabo fuera de la clase. ej: private ancho: number, ahora el ancho no podria modificarse desde fuera de la clase.
 
