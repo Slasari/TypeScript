@@ -518,3 +518,29 @@ function sort(c: Comparator2){
 
 //DIFERENCIA ENTRE INTERFACE Y TYPE
 
+//Interface: Es posible extender una interfaz y sus atributos simplemente declarando otra interfaz con el mismo nombre
+
+interface X {
+  a: string
+}
+interface X {
+  b: string
+}
+interface X {
+  c: string
+}
+
+function use(x: X) { //Podemos acceder a los atributos de las diferentes extensiones de nuestra interfaz X estando en diferentes scouts.
+  x.a + x.b + x.c
+}
+
+//El objeto Window siempre esta presente en todos los navegadores web y podemos acceder a sus propiedades como cualquier obj
+//Interface: Tambien podemos acoplar nuestras propiedades al objeto Window utilizando el metodo visto justo arriba.
+
+interface Window {
+  accountID: number
+}
+
+function use2(w: Window){
+  w.accountID
+}
