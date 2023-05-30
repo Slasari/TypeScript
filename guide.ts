@@ -676,3 +676,21 @@ let payload3: Respuesta2<string, number> = {
   whatever: 50,
 };
 //IMPORTANTE!! se recomienda no utilizar letras sueltas para declarar genericos, ya que esto puede confundir a largo plazo, en este caso podriamos reemplazar <T> por <Message> y <U> por <Something> asi quedaria mas claro que representa cada valor.
+
+//GENERICOS EN FUNCIONES
+
+type Nota = { message: string };
+type NotaColorida = Nota & { color: string };
+type Foto = { url: string };
+type Video = Foto & { duracion: number };
+type Publicacion = Nota | NotaColorida | Foto | Video;
+
+//HTTP POST /upload
+
+function subir<Publicacion>(p: Publicacion): Publicacion {
+  return p;
+}
+
+let post: Nota = { message: "Hello World" };
+let x = subir(post);
+//Manera correcta de hacerlo, declaramos que post sera de tipo nota y que "x" sera ejecutar la funcion subir con post, por lo tanto TypeScript ya sabe que x sera de tipo nota.
