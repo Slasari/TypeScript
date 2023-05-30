@@ -263,3 +263,19 @@ function login(data: LoginCredentials){
 
 //Aca tenemos un nuevo "tipo de dato" (tipo alias) llamado LoginCredentials que es un objeto que posee 2 propiedades, username y password
 //Esto sirve principalmente para que el codigo sea mucho mas escalable, ya que una vez que nuestra funcion de login necesite de alguna otra propiedad, podamos agregarla en el tipo de dato LoginCredentials y asi no debamos agregarla en cada lugar donde estamos utilizando la funcion.
+
+
+
+//Variables tipo literales
+
+//Que son? son variables que aceptan un unico valor, sintaxis: let una_variable_cualquiera: "valor_unico" = "valor_unico", ejemplo:
+
+let verdadera: true = true; //la variable verdadera solo posee un unico valor, el cual es true.
+
+let cinco: 5 = 5; //la variable "cinco" solo aceptara como valor 5
+
+let hola: "hola" = "hola" //la variable hola solo aceptara el valor "hola"
+
+//para esto tambien se utiliza "const"
+
+const adios = "adios" // adios solo aceptara como valor "adios" y no puede ser reedeclarado.
