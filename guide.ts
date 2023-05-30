@@ -140,13 +140,23 @@ class Rectangulo {
     
     alto: number
 
+    private _nombre: string = ""
+
     constructor(ancho:number, alto:number){
         console.log("constructor(")
         this.ancho = ancho;
         this.alto = alto;
     }
 
-    area(){
+    get nombre(){
+        return this._nombre
+    }
+
+    set nombre(value: string){
+        this._nombre = value
+    }
+
+    get area(){ //get: getter (linea 176)
         let resultado = this.ancho * this.alto  //This hace referencia a la instancia en la que se esta invocando al metodo.
         return resultado
     }
@@ -160,16 +170,72 @@ let r1 = new Rectangulo(10, 15);
 
 let r2 = new Rectangulo(4, 3);
 
-r1.area() 
+r1.area
 // En este caso, gracias al This, este llamado traera el area de r1
-r2.area()
+r2.area
 // y en este otro caso, traera el area de r2, ya que this hace refencia a la instancia en la cual se esta utilizando el metodo.
 
 //los valores de las propiedades de cada instancia se pueden modificar en cualquier momento.
 r2.alto = 5;
-r2.area()
+r2.area
 
 //private: es una palabra clave que hace que esa variable no pueda ser leida u modificada desde fuera de la clase. ej: private ancho: number, ahora el ancho no podria leerse u modificarse desde fuera de la clase.
 
 //readonly: esta palabra clave se asegura de que la variable no pueda recibir cambios una vez reciba su valor inicial.
+
+//get: un getter lo que hace es ejecutar una funcion dentro de la clase pero por fuera de esta solo se ve como un atributo. de esta manera optimizamos el codigo para que una vez tengamos una clase con decenas de metodos, no se ejecuten al crear una instancia, sino cuando vayamos a necesitarlo.(los getter por fuera de la clase se consideran readonly)
+
+//set: muy similar a un get pero en este caso cambia el valor de un atributo virtual. 
+
+//HERENCIA
+
+//Que es una herencia? podemos tener varias clases descendientes de una clase Padre, ej: class Vehiculo, class VehiculoTerreste extends Vehiculo, class VehiculoMaritimo extends Vehiculo, class VehiculoAereo extends Vehiculo. Los descendientes heredan todos los comportamientos de su clase Padre
+
+class Vehiculo {
+
+    fabricante: string = ""
+
+    constructor(fabricante: string){
+        this.fabricante = fabricante
+    }
+
+    moverse(){
+        console.log(`El vehiculo ${this.fabricante} se ha movido`)
+    }
+}
+
+//para utilizar constructores en las instancias de una clase, es necesario llamar al constructor de la clase Padre dentro de cada instancia.
+
+class VehiculoTerreste extends Vehiculo {
+
+    private tipo : string = ""
+
+    constructor(fabricante: string, tipo: string){
+        super(fabricante)
+        this.tipo = tipo
+    }
+
+    moverse(): void {
+        console.log(`El vehiculo Terrestre se ha movido y es una ${this.tipo}`)
+        super.moverse()                                         
+        //super: Esto traera tambien el metodo moverse de la clase Padre, ya que la palabra clave super (superior) hace refencia a la clase superior a la cual se encuentra esta palabra.
+    }
+}
+
+class VehiculoAereo extends Vehiculo {
+
+    moverse(): void {
+        console.log(`El vehiculo ${this.fabricante} se ha movido`)
+    }
+}
+
+class VehiculoMaritimo extends Vehiculo {
+
+    moverse(): void {
+        console.log(`El vehiculo ${this.fabricante} se ha movido`)
+    }
+}
+
+let vehiculo = new VehiculoTerreste("Yamaja", "Moto")
+vehiculo.moverse()
 
