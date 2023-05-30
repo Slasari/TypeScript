@@ -604,13 +604,13 @@ function procesar3(g: Geometria) {
 //Para que sirve enum? Enum sirve para crear un rango de valores estricto para una variable. ej:
 
 enum DiaSemana {
-  Lunes,
-  Martes,
-  Miercoles,
-  Jueves,
-  Viernes,
-  Sabado,
-  Domingo,
+  Lunes = "Lunes",
+  Martes  = "Martes",
+  Miercoles  = "Miercoles",
+  Jueves  = "Jueves",
+  Viernes  = "Viernes",
+  Sabado  = "Sabado",
+  Domingo  = "Domingo",
 }
 //Aqui especificamos gracias a la palabra clave enum, que el tipo DiaSemana solo puede tener los valores especificados.
 
