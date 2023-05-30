@@ -487,12 +487,12 @@ procesar(new OpelCorsa()); // Aun que ejecutemos el metodo con la clase OpelCors
 //Que es un tipo indiceable? arrays y objects
 
 interface Indizable {
-  [index: number] : boolean  //Esta propiedad indica al programa que esta interfaz es de tipo indiceable
+  [index: number]: boolean; //Esta propiedad indica al programa que esta interfaz es de tipo indiceable
 }
 
-let variable: Indizable = {}
+let variable: Indizable = {};
 
-variable[4] //Asi accedemos a la propiedad utilizando una interfaz indiceable.
+variable[4]; //Asi accedemos a la propiedad utilizando una interfaz indiceable.
 
 //FUNCIONES Y TIPOS HIBRIDOS
 
@@ -500,20 +500,20 @@ variable[4] //Asi accedemos a la propiedad utilizando una interfaz indiceable.
 
 //Funcion de tipo:
 
-type Comparator = (a: string, b: string) => number //Esta es la manera de crear un tipo que contenga una funcion.
+type Comparator = (a: string, b: string) => number; //Esta es la manera de crear un tipo que contenga una funcion.
 
 //Funcion de interfaz:
 
 interface Comparator2 {
-  (first: string, second: string) : number //Esta es la manera de crear una interfaz que contenga una funcion. (sera invocable)
-  safe: boolean,
-  reglas: string[]
+  (first: string, second: string): number; //Esta es la manera de crear una interfaz que contenga una funcion. (sera invocable)
+  safe: boolean;
+  reglas: string[];
 }
 
-function sort(c: Comparator2){
-  let respuesta = c("first", "second")                      //Aqui podemos ver que "c" contiene el metodo creado en la interfaz.
-  c.reglas                                                 //Y que tambien posee los atributos de dicho interfaz.
-  console.log(`Ordenado segun ${c.reglas}, ${respuesta}`) //Podemos utilizar ambos tipos de datos como querramos.
+function sort(c: Comparator2) {
+  let respuesta = c("first", "second"); //Aqui podemos ver que "c" contiene el metodo creado en la interfaz.
+  c.reglas; //Y que tambien posee los atributos de dicho interfaz.
+  console.log(`Ordenado segun ${c.reglas}, ${respuesta}`); //Podemos utilizar ambos tipos de datos como querramos.
 }
 
 //DIFERENCIA ENTRE INTERFACE Y TYPE
@@ -521,28 +521,29 @@ function sort(c: Comparator2){
 //Interface: Es posible extender una interfaz y sus atributos simplemente declarando otra interfaz con el mismo nombre
 
 interface X {
-  a: string
+  a: string;
 }
 interface X {
-  b: string
+  b: string;
 }
 interface X {
-  c: string
+  c: string;
 }
 
-function use(x: X) { //Podemos acceder a los atributos de las diferentes extensiones de nuestra interfaz X estando en diferentes scouts.
-  x.a + x.b + x.c
+function use(x: X) {
+  //Podemos acceder a los atributos de las diferentes extensiones de nuestra interfaz X estando en diferentes scouts.
+  x.a + x.b + x.c;
 }
 
 //El objeto Window siempre esta presente en todos los navegadores web y podemos acceder a sus propiedades como cualquier obj
 //Interface: Tambien podemos acoplar nuestras propiedades al objeto Window utilizando el metodo visto justo arriba.
 
 interface Window {
-  accountID: number
+  accountID: number;
 }
 
-function use2(w: Window){
-  w.accountID
+function use2(w: Window) {
+  w.accountID;
 }
 
 //CASTEOS
@@ -560,14 +561,44 @@ interface Triangulo extends Geometria {
 interface Cuadrado extends Geometria {
   lado: number;
 }
- 
-function procesar2(g: Geometria){  //La funcion recibe un parametro que implementa la interfaz Geometria(Solo posee la propiedad lados)
-  if(g.lados == 4){                //Verificamos que la cantidad de lados sea 4.
-    let cuadrado = g as Cuadrado;  //Si la cantida de lados es 4, entonces CASTEAMOS "g" de Geometria, a Cuadrado.
-    cuadrado.lado                  // Y ahora podemos acceder a su propiedad lado ya que es una propiedad de la interfaz Cuadrado.
-  } else if (g.lados == 3){
-    let triangulo = g as Triangulo;//Si la variable posee 3 lados, la casteamos a Triangulo.
-    triangulo.base;                //Y ahora podemos acceder a su base y a su altura, propiedades de la interfaz Triangulo.
+
+function procesar2(g: Geometria) {
+  //La funcion recibe un parametro que implementa la interfaz Geometria(Solo posee la propiedad lados)
+  if (g.lados == 4) {
+    //Verificamos que la cantidad de lados sea 4.
+    let cuadrado = g as Cuadrado; //Si la cantida de lados es 4, entonces CASTEAMOS "g" de Geometria, a Cuadrado.
+    cuadrado.lado; // Y ahora podemos acceder a su propiedad lado ya que es una propiedad de la interfaz Cuadrado.
+  } else if (g.lados == 3) {
+    let triangulo = g as Triangulo; //Si la variable posee 3 lados, la casteamos a Triangulo.
+    triangulo.base; //Y ahora podemos acceder a su base y a su altura, propiedades de la interfaz Triangulo.
     triangulo.altura;
   }
 }
+
+//INSTANCEOF
+
+//Para que sive instanceof? verifica si una variable es de un tipo o de una clase en concreto.
+
+let color1 = new String("verde");
+color1 instanceof String; // devuelve true ya que color1 es una instancia de new String.
+
+//Guardas de tipo is
+
+//Que son? Las guardas son funciones que devuelven un valor boolean, ej:
+
+function esUnCuadrado(x: any): x is Cuadrado {
+  //Aqui hacemos una comprobacion de tipos, si x es any, debe verificar si es un Cuadrado
+  return x.lados && x.pintar && x.lado; //Y luego retorna los valores que posee un Cuadrado
+}
+
+function procesar3(g: Geometria) {
+  //Misma funcion procesar de la linea 565, pero esta vez mas eficiente usando esUnCuadrado.
+  if (esUnCuadrado(g)) {
+    //Si g es un cuadrado, la funcion esUnCuadrado devolvera true, por lo tanto entrara en nuestro if.
+    g.lado;
+  }
+}
+
+//ENUM
+
+
