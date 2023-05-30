@@ -728,3 +728,8 @@ let t: Partial<TODO> = {
 
 //Para mas informacion sobre las utilidades de TypeScript leer la doc.
 
+//MODULOS
+//Que son los modulos? Hacer modulos significa ENCAPSULAR las partes de nuestro codigo segun su funcion, ya que es mas escalable tener 10 archivos de 100 lineas, que tener un archivo gigantesto de 1000 lineas.
+
+//Exports
+//Que son? Los Exports sirven para seleccionar una capsula de codigo que cumple una tarea, y utilizarla en otro archivo diferente sin tener que volver a realizar toda la logica, ya que si en algun momento debemos hacer cambios en ese codigo, deberiamos hacer los cambios en cada archivo donde estamos utilizandolo, sin embargo al exportar un unico codigo existente con esa funcion, al cambiar ese unico codigo, todos sus imports veran reflejados sus cambios.
