@@ -279,3 +279,25 @@ let hola: "hola" = "hola" //la variable hola solo aceptara el valor "hola"
 //para esto tambien se utiliza "const"
 
 const adios = "adios" // adios solo aceptara como valor "adios" y no puede ser reedeclarado.
+
+
+
+
+//Uniones de tipos
+
+//Que significa? basicamente las uniones de tipos sirven para que una variable pueda tener mas de un tipo. ej:
+
+function convertir(valor: string | number){  //la funcion convertir recibe el parametro valor, que puede ser string o number.
+
+    if(typeof(valor) === "string"){
+        valor.trim()
+    }
+    else if (typeof(valor)=== "number") {
+        valor.toFixed()
+    }
+
+    //Utilizamos typeof para saber de que tipo es el valor que nos esta llegando, y asi poder tomar las medidas para ese tipo.
+}
+
+convertir("hola");
+convertir(150);
