@@ -327,3 +327,34 @@ function operar(o: Operacion) { // el argumento "o" va a ser una Operacion, es d
         return resultado;
     }
 }
+
+
+
+//interseccion de tipos
+
+//Que es? Es una manera de trabajar uniendo varios tipo alias para optimizar el codigo, hacerlo mucho mas escalable y escribir lo menos posible
+
+type Coordenada = [x:number, y:number]
+type Vector = [x:number, y:number]
+
+type Posicionable = {
+    posicion: Coordenada
+}
+
+let posicion: Posicionable = {
+    posicion: [5, 5]
+}
+
+type Movible = {
+    velocidad: Vector,
+    aceleracion: Vector
+}
+
+type MovibleYPosicionable = Posicionable & Movible
+
+let obj: MovibleYPosicionable = {  
+    posicion: [5,5],
+    velocidad: [4,4],
+    aceleracion: [1,1]
+}
+//Ya que la variable "obj" es de tipo MovibleYPosicionable, que a su vez es una interseccion de Posicionable y Movible, para poder crear este obj de este tipo, vamos a necesitar declarar todas las variables antes mencionadas en sus tipos "Padres".
