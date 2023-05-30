@@ -601,4 +601,25 @@ function procesar3(g: Geometria) {
 
 //ENUM
 
+//Para que sirve enum? Enum sirve para crear un rango de valores estricto para una variable. ej:
 
+enum DiaSemana {
+  Lunes,
+  Martes,
+  Miercoles,
+  Jueves,
+  Viernes,
+  Sabado,
+  Domingo,
+}
+//Aqui especificamos gracias a la palabra clave enum, que el tipo DiaSemana solo puede tener los valores especificados.
+
+interface CitaMedica {
+  //Creamos la interfaz CitaMedica que contiene una propiedad para programar el dia de la cita.
+  dia: DiaSemana;
+}
+
+let cita: CitaMedica = {
+  //Creamos una cita medica.
+  dia: DiaSemana.Lunes, //Y como propiedad dia solo podemos agregar un valor ya especificado en nuestro tipo de dato enum.
+};
