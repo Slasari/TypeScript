@@ -419,71 +419,77 @@ interface Shape {
   perimeter(): number;
 }
 
-function process(s: Shape) {
-
-}
+function process(s: Shape) {}
 
 class Ractangle implements Shape {
-    sides: number = 4
-    
+  sides: number = 4;
+
   constructor(readonly width: number, readonly height: number) {}
 
   area(): number {
-    return this.width * this.height
+    return this.width * this.height;
   }
 
   perimeter(): number {
-    return 2 * this.width + 2 * this.height
+    return 2 * this.width + 2 * this.height;
   }
 }
 
 let r = new Ractangle(5, 5);
 process(r);
 
-
-
 //Implementacion de Herencias de interfaces.
 
 interface Vehicle {
-    readonly fabricador: string;
-    arrancarMotor(): void;
-    repostar(): void;
-    detenerMotor(): void;
+  readonly fabricador: string;
+  arrancarMotor(): void;
+  repostar(): void;
+  detenerMotor(): void;
 }
 
-interface VehicleTerrestre extends Vehicle{
-    conducir(): void
+interface VehicleTerrestre extends Vehicle {
+  conducir(): void;
 }
 
-interface VehicleMaritimo extends Vehicle{
-    sonarSirena(): void
-    encenderChimenea(): void;
-    detenerChimenea(): void;
+interface VehicleMaritimo extends Vehicle {
+  sonarSirena(): void;
+  encenderChimenea(): void;
+  detenerChimenea(): void;
 }
 
 class OpelCorsa implements VehicleTerrestre {
-    fabricador: string;
-    arrancarMotor(): void {
-        console.log("arranca")
-    }
-    repostar(): void {
-        console.log("Full tanque de super")
-    }
-    detenerMotor(): void {
-        console.log("se apaga")
-    }
-    conducir(): void {
-        console.log("se conduce")
-    }
+  fabricador: string;
+  arrancarMotor(): void {
+    console.log("arranca");
+  }
+  repostar(): void {
+    console.log("Full tanque de super");
+  }
+  detenerMotor(): void {
+    console.log("se apaga");
+  }
+  conducir(): void {
+    console.log("se conduce");
+  }
 
-    abrirMaletero(): void{
-
-    }
+  abrirMaletero(): void {}
 }
 
-function procesar (v : Vehicle){
-    v.arrancarMotor()
+function procesar(v: Vehicle) {
+  v.arrancarMotor();
 }
 
-procesar(new OpelCorsa()) // aun que ejecutemos el metodo con la clase OpelCorsa, "procesar" lo tomara como un vehicle, por lo tanto
-                         // solo tendra disponibles los metodos de Vechile (en este caso, abrirMaletero no estara disponible.)
+procesar(new OpelCorsa()); // Aun que ejecutemos el metodo con la clase OpelCorsa, "procesar" lo tomara como un vehicle, por lo tanto
+// solo tendra disponibles los metodos de Vechile (en este caso, abrirMaletero no estara disponible.)
+
+//INTERFACES CON INDICE
+
+//Que es un tipo indiceable? arrays y objects
+
+interface Indizable {
+  [index: number] : boolean  //Esta propiedad indica al programa que esta interfaz es de tipo indiceable
+}
+
+let variable: Indizable = {}
+
+variable[4] //Asi accedemos a la propiedad utilizando una interfaz indiceable.
