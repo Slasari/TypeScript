@@ -493,3 +493,28 @@ interface Indizable {
 let variable: Indizable = {}
 
 variable[4] //Asi accedemos a la propiedad utilizando una interfaz indiceable.
+
+//FUNCIONES Y TIPOS HIBRIDOS
+
+//Que es un tipo hibrido? un tipo hibrido es algo que puede ser invocado como una funcion, pero que tambien posee atributos.
+
+//Funcion de tipo:
+
+type Comparator = (a: string, b: string) => number //Esta es la manera de crear un tipo que contenga una funcion.
+
+//Funcion de interfaz:
+
+interface Comparator2 {
+  (first: string, second: string) : number //Esta es la manera de crear una interfaz que contenga una funcion. (sera invocable)
+  safe: boolean,
+  reglas: string[]
+}
+
+function sort(c: Comparator2){
+  let respuesta = c("first", "second")                      //Aqui podemos ver que "c" contiene el metodo creado en la interfaz.
+  c.reglas                                                 //Y que tambien posee los atributos de dicho interfaz.
+  console.log(`Ordenado segun ${c.reglas}, ${respuesta}`) //Podemos utilizar ambos tipos de datos como querramos.
+}
+
+//DIFERENCIA ENTRE INTERFACE Y TYPE
+
