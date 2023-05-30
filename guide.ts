@@ -679,18 +679,36 @@ let payload3: Respuesta2<string, number> = {
 
 //GENERICOS EN FUNCIONES
 
-type Nota = { message: string };
-type NotaColorida = Nota & { color: string };
-type Foto = { url: string };
-type Video = Foto & { duracion: number };
-type Publicacion = Nota | NotaColorida | Foto | Video;
+interface Post {
+  id: number;
+}
+interface Nota extends Post {
+  message: string;
+}
+interface NotaColorida extends Nota {
+  color: string;
+}
+interface Foto extends Post {
+  url: string;
+}
+interface Video extends Foto {
+  duracion: number;
+}
 
 //HTTP POST /upload
 
-function subir<Publicacion>(p: Publicacion): Publicacion {
+function subir<Publicacion extends Post, Extra>(
+  p: Publicacion,
+  e?: Extra
+): Publicacion {
   return p;
 }
 
-let post: Nota = { message: "Hello World" };
+let post: Nota = { id: 1, message: "Hello World" };
 let x = subir(post);
 //Manera correcta de hacerlo, declaramos que post sera de tipo nota y que "x" sera ejecutar la funcion subir con post, por lo tanto TypeScript ya sabe que x sera de tipo nota.
+
+//RESTRICCIONES EN GENERICOS
+//(Linea 682) Al agregar la interfaz Post y hacer que nota sea una extension de esta interfaz, estamos declarando que una variable de tipo Nota ahora debera poseer un id (proveniente de Post) y un message que debe ser un string (Proveniente de Nota) de esta manera le estamos diciendo a TypeScript que si la variable "post" no cumple con las condiciones que debe tener para ser considerada una Nota, entonces no ejecutara la funcion subir.
+
+
