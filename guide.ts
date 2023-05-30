@@ -1,66 +1,79 @@
 //funcion para saludar a una persona por su nombre//
 
-function saludar(nombre : string) : string{
-    return `Bienvenido ${nombre.toUpperCase()}!`;
-  }
-  console.log(saludar("Ariel"));
+function saludar(nombre: string): string {
+  return `Bienvenido ${nombre.toUpperCase()}!`;
+}
+console.log(saludar("Ariel"));
 
 //Tipos de datos primitivos//
 
 //string : cadena de texto, para que un dato sea considerado string debe estar representado entre ''
 
-let cadena_texto : string = "Hello World!"
+let cadena_texto: string = "Hello World!";
 
 //number : cualquier variable de numero
 
-let entero : number = 10;
-let decimal : number = 10.5;
-let hexadecimal : number = 0xcbcbaa
-let binario : number = 0b10010010101
+let entero: number = 10;
+let decimal: number = 10.5;
+let hexadecimal: number = 0xcbcbaa;
+let binario: number = 0b10010010101;
 
 //cuando un numero es demasiado largo, podemos usar _ para separarlo y asi entender mejor el codigo
 
-let numero_demasiado_largo : number = 7_823_340_127
+let numero_demasiado_largo: number = 7_823_340_127;
 
 //boolean : deja en claro que esta variable puede ser true o false
 
-let falso : boolean = false;
-let verdadero : boolean = true;
+let falso: boolean = false;
+let verdadero: boolean = true;
 
 //Tipos de datos especiales de TypeScript//
 
 // any : se utiliza para indicar que la variable puede ser cualquier tipo de dato (no necesita inicializacion de valor), no recomendado.
 
-let algo : any;
+let algo: any;
 
 // null : no posee ningun tipo de valor.
 
-let sin_valor : null = null;
+let sin_valor: null = null;
 
 // undefined : misma teoria que el tipo de dato null, este se puede utilizar para indicar que una variable puede ser un string o ser undefined, por ejemplo.
 
-let sin_definir : undefined = undefined;
+let sin_definir: undefined = undefined;
 
 // void : representa la nada, y se utiliza por ejemplo, para indicar que una funcion no retorna ningun valor, es decir, no posee un return.
 // console.log no es lo mismo que return, console.log imprime algo en la consola. return siempre  retorna un valor.
 
-function saludo (nombre){
-    console.log(`hola ${nombre}`) 
+function saludo(nombre) {
+  console.log(`hola ${nombre}`);
 }
 
 //Arrays y tuplas
 
 //Array : Es una lista de valores ordenados por un indice, los valores pueden ser del mismo tipo o no, segun lo indiquemos.
 
-let dias: string[] = ["Lunes","Martes","Miercoles","Jueves","Viernes", "Sabado", "Domingo"] //Array solo de strings.
+let dias: string[] = [
+  "Lunes",
+  "Martes",
+  "Miercoles",
+  "Jueves",
+  "Viernes",
+  "Sabado",
+  "Domingo",
+]; //Array solo de strings.
 
-let cosas_varias: any[] = ["Lunes", 10, true, null] //Array de varios tipos de datos.
+let cosas_varias: any[] = ["Lunes", 10, true, null]; //Array de varios tipos de datos.
 
 //Tupla : Tipo de Array donde importa el orden y el tipo de cada dato que se envia.
 
-let ejemplo_tupla : [nombre: string, apellido: string, edad: number, admin: boolean];
+let ejemplo_tupla: [
+  nombre: string,
+  apellido: string,
+  edad: number,
+  admin: boolean
+];
 
-ejemplo_tupla = ["Ariel", "Salcito", 23, true]
+ejemplo_tupla = ["Ariel", "Salcito", 23, true];
 
 //Objetos: Es una estructura de datos independiente que posee sus propiedades y tipos, ejemplo un objeto taza posee una propiedad color y este color puede ser rojo.
 
@@ -68,27 +81,27 @@ ejemplo_tupla = ["Ariel", "Salcito", 23, true]
 
 //Este es el objeto persona y siempre que querramos crear una debemos agregar esas propiedades, nombre, apellido, etc.
 
-let persona : {
-    nombre: string,
-    apellido: string,
-    edad: number,
-    pais: string,
-    fecha_nacimiento: Date,
-    laboral: {
-        empresa: string,
-        sector: string
-    }
+let persona: {
+  nombre: string;
+  apellido: string;
+  edad: number;
+  pais: string;
+  fecha_nacimiento: Date;
+  laboral: {
+    empresa: string;
+    sector: string;
+  };
 } = {
-    nombre: "Ariel",
-    apellido: "Salcito",
-    edad: 23,
-    pais: "Argentina",
-    fecha_nacimiento: new Date(2000, 2, 4),
-    laboral: {
-        empresa: "Compra gamer",
-        sector: "Desarrollo Front-End"
-    }
-}
+  nombre: "Ariel",
+  apellido: "Salcito",
+  edad: 23,
+  pais: "Argentina",
+  fecha_nacimiento: new Date(2000, 2, 4),
+  laboral: {
+    empresa: "Compra gamer",
+    sector: "Desarrollo Front-End",
+  },
+};
 
 //FUNCIONES
 
@@ -96,35 +109,33 @@ let persona : {
 
 // La funcion a continuacion se encarga de sumar 2 numeros que recibe por parametros.
 
-function sumar(x:number, y:number): number {
-    let resultado = x + y;
-    console.log(`${x} + ${y} = ${resultado}`)
-    return resultado; 
-};
+function sumar(x: number, y: number): number {
+  let resultado = x + y;
+  console.log(`${x} + ${y} = ${resultado}`);
+  return resultado;
+}
 
 // Function anonima, utiliza "callback"
 
-let restar = function(x:number, y:number) : number {
-    let resultado = x - y;
-    console.log(`${x} - ${y} = ${resultado}`)
-    return resultado;
-}
+let restar = function (x: number, y: number): number {
+  let resultado = x - y;
+  console.log(`${x} - ${y} = ${resultado}`);
+  return resultado;
+};
 
-let multiplicar: (x: number, y: number) => number
+let multiplicar: (x: number, y: number) => number;
 
 // Forma larga
-multiplicar = function(x, y){
-    let resultado = x * y
-    console.log(`${x} * ${y} = ${resultado}`)
-    return resultado
-}
+multiplicar = function (x, y) {
+  let resultado = x * y;
+  console.log(`${x} * ${y} = ${resultado}`);
+  return resultado;
+};
 // Forma corta
-multiplicar = (x, y) => x * y
+multiplicar = (x, y) => x * y;
 
-
-
-sumar(2,8);
-restar(9,5);
+sumar(2, 8);
+restar(9, 5);
 
 //CLASES
 
@@ -135,49 +146,49 @@ restar(9,5);
 //Cuando creamos una clase, no es necesario declarar variables utilizando "var", "let" o "const" ni declarar las funciones, ya que el lenguaje comprende que dentro de las clases estos van a ser los unicos tipos de datos que se van a manejar.
 
 class Rectangulo {
+  ancho: number;
 
-    ancho: number 
-    
-    alto: number
+  alto: number;
 
-    private _nombre: string = ""
+  private _nombre: string = "";
 
-    constructor(ancho:number, alto:number){
-        console.log("constructor(")
-        this.ancho = ancho;
-        this.alto = alto;
-    }
+  constructor(ancho: number, alto: number) {
+    console.log("constructor(");
+    this.ancho = ancho;
+    this.alto = alto;
+  }
 
-    get nombre(){
-        return this._nombre
-    }
+  get nombre() {
+    return this._nombre;
+  }
 
-    set nombre(value: string){
-        this._nombre = value
-    }
+  set nombre(value: string) {
+    this._nombre = value;
+  }
 
-    get area(){ //get: getter (linea 176)
-        let resultado = this.ancho * this.alto  //This hace referencia a la instancia en la que se esta invocando al metodo.
-        return resultado
-    }
-    perimetro(){
-        let resultado = this.ancho * 2 + this.alto * 2 
-        return resultado
-    }
+  get area() {
+    //get: getter (linea 176)
+    let resultado = this.ancho * this.alto; //This hace referencia a la instancia en la que se esta invocando al metodo.
+    return resultado;
+  }
+  perimetro() {
+    let resultado = this.ancho * 2 + this.alto * 2;
+    return resultado;
+  }
 }
 
 let r1 = new Rectangulo(10, 15);
 
 let r2 = new Rectangulo(4, 3);
 
-r1.area
+r1.area;
 // En este caso, gracias al This, este llamado traera el area de r1
-r2.area
+r2.area;
 // y en este otro caso, traera el area de r2, ya que this hace refencia a la instancia en la cual se esta utilizando el metodo.
 
 //los valores de las propiedades de cada instancia se pueden modificar en cualquier momento.
 r2.alto = 5;
-r2.area
+r2.area;
 
 //private: es una palabra clave que hace que esa variable no pueda ser leida u modificada desde fuera de la clase. ej: private ancho: number, ahora el ancho no podria leerse u modificarse desde fuera de la clase.
 
@@ -185,86 +196,79 @@ r2.area
 
 //get: un getter lo que hace es ejecutar una funcion dentro de la clase pero por fuera de esta solo se ve como un atributo. de esta manera optimizamos el codigo para que una vez tengamos una clase con decenas de metodos, no se ejecuten al crear una instancia, sino cuando vayamos a necesitarlo.(los getter por fuera de la clase se consideran readonly)
 
-//set: muy similar a un get pero en este caso cambia el valor de un atributo virtual. 
+//set: muy similar a un get pero en este caso cambia el valor de un atributo virtual.
 
 //HERENCIA
 
 //Que es una herencia? podemos tener varias clases descendientes de una clase Padre, ej: class Vehiculo, class VehiculoTerreste extends Vehiculo, class VehiculoMaritimo extends Vehiculo, class VehiculoAereo extends Vehiculo. Los descendientes heredan todos los comportamientos de su clase Padre
 
 abstract class Vehiculo {
+  //anstract: palabra clave que impide la creacion de un nuevo "Vehiculo" sin mas, es decir que esta clase solo se podria utilizar para agregar metodos a las demas instancias de Vehiculo, y para crear un nuevo vehiculo este debe pertener a una de sus extenciones (Terreste, Aereo, Maritimo)
 
-//anstract: palabra clave que impide la creacion de un nuevo "Vehiculo" sin mas, es decir que esta clase solo se podria utilizar para agregar metodos a las demas instancias de Vehiculo, y para crear un nuevo vehiculo este debe pertener a una de sus extenciones (Terreste, Aereo, Maritimo)
+  protected fabricante: string = "";
 
-    protected fabricante: string = ""
+  //protected: es otra palabra clave que impide el acceso a la variable desde fuera del scout, a menos que se llame dentro de un heredero de esta clase.
 
-    //protected: es otra palabra clave que impide el acceso a la variable desde fuera del scout, a menos que se llame dentro de un heredero de esta clase.
+  constructor(fabricante: string) {
+    this.fabricante = fabricante;
+  }
 
-    constructor(fabricante: string){
-        this.fabricante = fabricante
-    }
-
-    moverse(){
-        console.log(`El vehiculo ${this.fabricante} se ha movido`)
-    }
+  moverse() {
+    console.log(`El vehiculo ${this.fabricante} se ha movido`);
+  }
 }
 
 //para utilizar constructores en las instancias de una clase, es necesario llamar al constructor de la clase Padre dentro de cada instancia.
 
 class VehiculoTerreste extends Vehiculo {
+  private tipo: string = "";
 
-    private tipo : string = ""
+  constructor(fabricante: string, tipo: string) {
+    super(fabricante);
+    this.tipo = tipo;
+  }
 
-    constructor(fabricante: string, tipo: string){
-        super(fabricante)
-        this.tipo = tipo
-    }
+  moverse(): void {
+    console.log(`El vehiculo Terrestre se ha movido y es una ${this.tipo}`);
+    super.moverse();
+    //super: Esto traera tambien el metodo moverse de la clase Padre, ya que la palabra clave super (superior) hace refencia a la clase superior a la cual se encuentra esta palabra.
+  }
 
-    moverse(): void {
-        console.log(`El vehiculo Terrestre se ha movido y es una ${this.tipo}`)
-        super.moverse()                                         
-        //super: Esto traera tambien el metodo moverse de la clase Padre, ya que la palabra clave super (superior) hace refencia a la clase superior a la cual se encuentra esta palabra.
-    }
-
-    reparar(){
-        console.log(`Un momento que busco el manual de instrucciones de ${this.fabricante}`)
-    }
+  reparar() {
+    console.log(
+      `Un momento que busco el manual de instrucciones de ${this.fabricante}`
+    );
+  }
 }
 
 class VehiculoAereo extends Vehiculo {
-
-    moverse(): void {
-        console.log(`El vehiculo ${this.fabricante} se ha movido`)
-    }
+  moverse(): void {
+    console.log(`El vehiculo ${this.fabricante} se ha movido`);
+  }
 }
 
 class VehiculoMaritimo extends Vehiculo {
-
-    moverse(): void {
-        console.log(`El vehiculo ${this.fabricante} se ha movido`)
-    }
+  moverse(): void {
+    console.log(`El vehiculo ${this.fabricante} se ha movido`);
+  }
 }
 
-let vehiculo = new VehiculoTerreste("Yamaja", "Moto")
-vehiculo.moverse()
-
+let vehiculo = new VehiculoTerreste("Yamaja", "Moto");
+vehiculo.moverse();
 
 //TIPOS ALIAS
 
 //Que son? Los tipos alias permiten utilizar una variable para tomar el valor de un tipo de dato o varios tipos de datos. ej:
 
 type LoginCredentials = {
-    username: string,
-    password: string
-}
+  username: string;
+  password: string;
+};
 
-function login(data: LoginCredentials){
-
-}
+function login(data: LoginCredentials) {}
 
 //Aca tenemos un nuevo "tipo de dato" (tipo alias) llamado LoginCredentials que es un objeto que posee 2 propiedades, username y password
 //Esto sirve principalmente para que el codigo sea mucho mas escalable, ya que una vez que nuestra funcion de login necesite de alguna otra propiedad, podamos agregarla en el tipo de dato LoginCredentials y asi no debamos agregarla en cada lugar donde estamos utilizando la funcion.
-
-
 
 //Variables tipo literales
 
@@ -274,87 +278,136 @@ let verdadera: true = true; //la variable verdadera solo posee un unico valor, e
 
 let cinco: 5 = 5; //la variable "cinco" solo aceptara como valor 5
 
-let hola: "hola" = "hola" //la variable hola solo aceptara el valor "hola"
+let hola: "hola" = "hola"; //la variable hola solo aceptara el valor "hola"
 
 //para esto tambien se utiliza "const"
 
-const adios = "adios" // adios solo aceptara como valor "adios" y no puede ser reedeclarado.
-
-
-
+const adios = "adios"; // adios solo aceptara como valor "adios" y no puede ser reedeclarado.
 
 //Uniones de tipos
 
 //Que significa? basicamente las uniones de tipos sirven para que una variable pueda tener mas de un tipo. ej:
 
-function convertir(valor: string | number){  //la funcion convertir recibe el parametro valor, que puede ser string o number.
+function convertir(valor: string | number) {
+  //la funcion convertir recibe el parametro valor, que puede ser string o number.
 
-    if(typeof(valor) === "string"){
-        valor.trim()
-    }
-    else if (typeof(valor)=== "number") {
-        valor.toFixed()
-    }
+  if (typeof valor === "string") {
+    valor.trim();
+  } else if (typeof valor === "number") {
+    valor.toFixed();
+  }
 
-    //Utilizamos typeof para saber de que tipo es el valor que nos esta llegando, y asi poder tomar las medidas para ese tipo.
+  //Utilizamos typeof para saber de que tipo es el valor que nos esta llegando, y asi poder tomar las medidas para ese tipo.
 }
 convertir("hola");
 convertir(150);
 
-
 //Uniones discriminantes basicamente todos los tipos alias poseen una propiedad en comun "tipo" y dependiendo del valor de esa propiedad podemos decidir si ejecutar la accion a o ejecutar la accion b. ej:
 
 type OperacionSuma = {
-    sumando1 : number;
-    sumando2 : number;
-    tipo : 'sumar'
-}
+  sumando1: number;
+  sumando2: number;
+  tipo: "sumar";
+};
 
 type OperacionMultiplicar = {
-    operando1 : number;
-    operando2 : number;
-    tipo : 'multiplicar'
+  operando1: number;
+  operando2: number;
+  tipo: "multiplicar";
+};
+
+type Operacion = OperacionSuma | OperacionMultiplicar;
+
+function operar(o: Operacion) {
+  // el argumento "o" va a ser una Operacion, es decir que puede ser OperacionSuma u OperacionMultiplicar
+  if (o.tipo == "sumar") {
+    // para saber que tipo de Operacion esta entrando en la funcion, verificamos el valor de "tipo"
+    let resultado = o.sumando1 + o.sumando2;
+    return resultado;
+  } else if (o.tipo == "multiplicar") {
+    let resultado = o.operando1 * o.operando2;
+    return resultado;
+  }
 }
-
-type Operacion = OperacionSuma | OperacionMultiplicar
-
-function operar(o: Operacion) { // el argumento "o" va a ser una Operacion, es decir que puede ser OperacionSuma u OperacionMultiplicar
-    if (o.tipo == 'sumar'){    // para saber que tipo de Operacion esta entrando en la funcion, verificamos el valor de "tipo"
-       let resultado = o.sumando1 + o.sumando2;
-       return resultado;
-    } else if (o.tipo == 'multiplicar'){
-        let resultado = o.operando1 * o.operando2
-        return resultado;
-    }
-}
-
-
 
 //interseccion de tipos
 
 //Que es? Es una manera de trabajar uniendo varios tipo alias para optimizar el codigo, hacerlo mucho mas escalable y escribir lo menos posible
 
-type Coordenada = [x:number, y:number]
-type Vector = [x:number, y:number]
+type Coordenada = [x: number, y: number];
+type Vector = [x: number, y: number];
 
 type Posicionable = {
-    posicion: Coordenada
-}
+  posicion: Coordenada;
+};
 
 let posicion: Posicionable = {
-    posicion: [5, 5]
-}
+  posicion: [5, 5],
+};
 
 type Movible = {
-    velocidad: Vector,
-    aceleracion: Vector
-}
+  velocidad: Vector;
+  aceleracion: Vector;
+};
 
-type MovibleYPosicionable = Posicionable & Movible
+type MovibleYPosicionable = Posicionable & Movible;
 
-let obj: MovibleYPosicionable = {  
-    posicion: [5,5],
-    velocidad: [4,4],
-    aceleracion: [1,1]
-}
+let obj: MovibleYPosicionable = {
+  posicion: [5, 5],
+  velocidad: [4, 4],
+  aceleracion: [1, 1],
+};
+
 //Ya que la variable "obj" es de tipo MovibleYPosicionable, que a su vez es una interseccion de Posicionable y Movible, para poder crear este obj de este tipo, vamos a necesitar declarar todas las variables antes mencionadas en sus tipos "Padres".
+
+//INTERFACES
+
+//Que son? Una interfaz es una especificacion o un CONTRATO, basicamente cuando creemos una interfaz, vamos a crear un tipo de dato y vamos a declarar una serie de aspectos que luego queremos que objetos de ese tipo tengan. ej:
+
+interface UserData {
+  readonly username: string; //readonly: el valor puede leerse pero no cambiarse fuera del scout donde fue creado.
+  created_at?: Date;        // el signo ? hace refencia a que esta propiedad puede ser undefined.
+  superuser: boolean;
+  readonly personal: {
+    name: string,
+    email: string
+  }
+
+  logout(): void;
+  rename: (username: string) => void;
+}
+//Si algo en nuestro codigo quiere considerarse UserData, debe implementar todo aquello que posea nuestra interfaz
+
+function loginUser(): UserData {
+  return {
+    username: "ervilax", 
+    created_at: new Date(),
+    superuser: true,
+    personal: {
+        name: 'xalivre',
+        email: 'xalivre@hotmail.com'
+    },
+    logout() {
+      console.log("adios");
+    },
+    rename(username) {
+      console.log("TODO: Rename account");
+    },
+  };
+}
+//Si agregaramos mas campos al return de loginUser, esto daria error ya que no se respetaria la implementacion de la interface UserData.
+
+let log = loginUser()
+console.log(log.username)
+
+if(log.created_at){   
+    log.created_at
+}
+//aqui TypeScript no sabe si created_at posee algun valor o es undefined, sin embargo una vez que entramos en el if ya sabe al 100% que created_at contiene un valor "date" ya que sino, no hubiera accedido al if.
+
+
+//una manera mas simple de acceder a esta propiedad solo si tiene valor es volver a utilizar "?" para comprobar si posee algun valor, ej:
+log.created_at?.toISOString
+//Si utilizamos "!" le estamos diciendo a TypeScript que ignore esta comprobacion y acceda a la propiedad de todas formas.
+log.created_at!.toISOString
+
