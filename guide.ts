@@ -366,12 +366,12 @@ let obj: MovibleYPosicionable = {
 
 interface UserData {
   readonly username: string; //readonly: el valor puede leerse pero no cambiarse fuera del scout donde fue creado.
-  created_at?: Date;        // el signo ? hace refencia a que esta propiedad puede ser undefined.
+  created_at?: Date; // el signo ? hace refencia a que esta propiedad puede ser undefined.
   superuser: boolean;
   readonly personal: {
-    name: string,
-    email: string
-  }
+    name: string;
+    email: string;
+  };
 
   logout(): void;
   rename: (username: string) => void;
@@ -380,12 +380,12 @@ interface UserData {
 
 function loginUser(): UserData {
   return {
-    username: "ervilax", 
+    username: "ervilax",
     created_at: new Date(),
     superuser: true,
     personal: {
-        name: 'xalivre',
-        email: 'xalivre@hotmail.com'
+      name: "xalivre",
+      email: "xalivre@hotmail.com",
     },
     logout() {
       console.log("adios");
@@ -397,17 +397,93 @@ function loginUser(): UserData {
 }
 //Si agregaramos mas campos al return de loginUser, esto daria error ya que no se respetaria la implementacion de la interface UserData.
 
-let log = loginUser()
-console.log(log.username)
+let log = loginUser();
+console.log(log.username);
 
-if(log.created_at){   
-    log.created_at
+if (log.created_at) {
+  log.created_at;
 }
 //aqui TypeScript no sabe si created_at posee algun valor o es undefined, sin embargo una vez que entramos en el if ya sabe al 100% que created_at contiene un valor "date" ya que sino, no hubiera accedido al if.
 
-
 //una manera mas simple de acceder a esta propiedad solo si tiene valor es volver a utilizar "?" para comprobar si posee algun valor, ej:
-log.created_at?.toISOString
+log.created_at?.toISOString;
 //Si utilizamos "!" le estamos diciendo a TypeScript que ignore esta comprobacion y acceda a la propiedad de todas formas.
-log.created_at!.toISOString
+log.created_at!.toISOString;
 
+//Implementacion de interfaces
+
+interface Shape {
+  readonly sides: number;
+
+  area(): number;
+  perimeter(): number;
+}
+
+function process(s: Shape) {
+
+}
+
+class Ractangle implements Shape {
+    sides: number = 4
+    
+  constructor(readonly width: number, readonly height: number) {}
+
+  area(): number {
+    return this.width * this.height
+  }
+
+  perimeter(): number {
+    return 2 * this.width + 2 * this.height
+  }
+}
+
+let r = new Ractangle(5, 5);
+process(r);
+
+
+
+//Implementacion de Herencias de interfaces.
+
+interface Vehicle {
+    readonly fabricador: string;
+    arrancarMotor(): void;
+    repostar(): void;
+    detenerMotor(): void;
+}
+
+interface VehicleTerrestre extends Vehicle{
+    conducir(): void
+}
+
+interface VehicleMaritimo extends Vehicle{
+    sonarSirena(): void
+    encenderChimenea(): void;
+    detenerChimenea(): void;
+}
+
+class OpelCorsa implements VehicleTerrestre {
+    fabricador: string;
+    arrancarMotor(): void {
+        console.log("arranca")
+    }
+    repostar(): void {
+        console.log("Full tanque de super")
+    }
+    detenerMotor(): void {
+        console.log("se apaga")
+    }
+    conducir(): void {
+        console.log("se conduce")
+    }
+
+    abrirMaletero(): void{
+
+    }
+}
+
+function procesar (v : Vehicle){
+    v.arrancarMotor()
+}
+
+procesar(new OpelCorsa()) // aun que ejecutemos el metodo con la clase OpelCorsa, "procesar" lo tomara como un vehicle, por lo tanto
+                         // solo tendra disponibles los metodos de Vechile (en este caso, abrirMaletero no estara disponible.)
