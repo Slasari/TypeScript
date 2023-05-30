@@ -191,9 +191,13 @@ r2.area
 
 //Que es una herencia? podemos tener varias clases descendientes de una clase Padre, ej: class Vehiculo, class VehiculoTerreste extends Vehiculo, class VehiculoMaritimo extends Vehiculo, class VehiculoAereo extends Vehiculo. Los descendientes heredan todos los comportamientos de su clase Padre
 
-class Vehiculo {
+abstract class Vehiculo {
 
-    fabricante: string = ""
+//anstract: palabra clave que impide la creacion de un nuevo "Vehiculo" sin mas, es decir que esta clase solo se podria utilizar para agregar metodos a las demas instancias de Vehiculo, y para crear un nuevo vehiculo este debe pertener a una de sus extenciones (Terreste, Aereo, Maritimo)
+
+    protected fabricante: string = ""
+
+    //protected: es otra palabra clave que impide el acceso a la variable desde fuera del scout, a menos que se llame dentro de un heredero de esta clase.
 
     constructor(fabricante: string){
         this.fabricante = fabricante
@@ -219,6 +223,10 @@ class VehiculoTerreste extends Vehiculo {
         console.log(`El vehiculo Terrestre se ha movido y es una ${this.tipo}`)
         super.moverse()                                         
         //super: Esto traera tambien el metodo moverse de la clase Padre, ya que la palabra clave super (superior) hace refencia a la clase superior a la cual se encuentra esta palabra.
+    }
+
+    reparar(){
+        console.log(`Un momento que busco el manual de instrucciones de ${this.fabricante}`)
     }
 }
 
