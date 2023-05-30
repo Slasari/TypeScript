@@ -785,3 +785,13 @@ export type Product = {
     "lib": ["es2015"]
   } */
 
+
+//MODULOS DE NPM
+//Que es y para que sirve? Npm es una pagina donde podemos acceder desde nuestro navegar web y desde alli descargarnos y utilizar en nuestra aplicacion, modulos (bloques de codigo, capsulas, etc) que la comunidad crea y sube a esta plataforma.
+//ejemplo: is-what es una dependecia que nos permite tener algunas funciones para saber de que tipo son ciertos resultados.
+
+//ARROBA-TYPES Y .D.TS
+//Las dependencias que instalemos pueden estar escritas en diferentes lenguajes de programacion, por eso es importante que la dependencia que instalemos posea un archivo .d.ts que basicamente lo que hace es transformar el codigo fuente a una version de ts para que sea compatible con nuestra aplicacion.
+//Para solucionar este problema, tambien podemos buscar ese modulo o dependencia en npm utilizando @types/ y aqui el nombre de la depencia que no posee .d.ts 
+
+//FINALIZADO.
