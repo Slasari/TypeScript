@@ -544,3 +544,30 @@ interface Window {
 function use2(w: Window){
   w.accountID
 }
+
+//CASTEOS
+
+//Que es? un casteo es cuando transformamos una variable de un tipo, a otro tipo.
+
+interface Geometria {
+  lados: number;
+  pintar(): void;
+}
+interface Triangulo extends Geometria {
+  base: number;
+  altura: number;
+}
+interface Cuadrado extends Geometria {
+  lado: number;
+}
+ 
+function procesar2(g: Geometria){  //La funcion recibe un parametro que implementa la interfaz Geometria(Solo posee la propiedad lados)
+  if(g.lados == 4){                //Verificamos que la cantidad de lados sea 4.
+    let cuadrado = g as Cuadrado;  //Si la cantida de lados es 4, entonces CASTEAMOS "g" de Geometria, a Cuadrado.
+    cuadrado.lado                  // Y ahora podemos acceder a su propiedad lado ya que es una propiedad de la interfaz Cuadrado.
+  } else if (g.lados == 3){
+    let triangulo = g as Triangulo;//Si la variable posee 3 lados, la casteamos a Triangulo.
+    triangulo.base;                //Y ahora podemos acceder a su base y a su altura, propiedades de la interfaz Triangulo.
+    triangulo.altura;
+  }
+}
