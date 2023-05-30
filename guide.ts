@@ -605,12 +605,12 @@ function procesar3(g: Geometria) {
 
 enum DiaSemana {
   Lunes = "Lunes",
-  Martes  = "Martes",
-  Miercoles  = "Miercoles",
-  Jueves  = "Jueves",
-  Viernes  = "Viernes",
-  Sabado  = "Sabado",
-  Domingo  = "Domingo",
+  Martes = "Martes",
+  Miercoles = "Miercoles",
+  Jueves = "Jueves",
+  Viernes = "Viernes",
+  Sabado = "Sabado",
+  Domingo = "Domingo",
 }
 //Aqui especificamos gracias a la palabra clave enum, que el tipo DiaSemana solo puede tener los valores especificados.
 
@@ -630,5 +630,32 @@ enum Permisos {
   EscribirMensajes = 0,
   Reaccionar = EscribirMensajes * 2,
   EnviarEnlaces = Reaccionar * 2,
-  ConectarseACanalesDeVoz = EnviarEnlaces * 2
+  ConectarseACanalesDeVoz = EnviarEnlaces * 2,
 }
+
+//GENERICOS
+//Para que sirve? Sirve para influenciar desde fuera, el tipo de alguna propiedad de la interfaz generica. (<T>) ej :
+
+interface Respuesta<T> {
+  //Indicamos que message va a ser de tipo T y luego, vamos a indicar que tipo de dato es T.
+  type: string;
+  success: boolean;
+  message: T;
+}
+
+let payload: Respuesta<string> = {
+  //Aqui indicamos que <T> va a ser de tipo string, por lo tanto, message solo aceptara ese valor.
+  type: "post",
+  success: true,
+  message: "enviado",
+};
+
+let payload2: Respuesta<boolean> = {
+  //Aqui indicamos que <T> sera un booleano, por lo tanto, message solo aceptara los valores true o false.
+  type: "get",
+  success: true,
+  message: true,
+};
+
+//GENERICOS 2
+
