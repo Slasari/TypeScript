@@ -623,3 +623,12 @@ let cita: CitaMedica = {
   //Creamos una cita medica.
   dia: DiaSemana.Lunes, //Y como propiedad dia solo podemos agregar un valor ya especificado en nuestro tipo de dato enum.
 };
+
+//ENUM CON VALORES COMPUTADOS
+
+enum Permisos {
+  EscribirMensajes = 0,
+  Reaccionar = EscribirMensajes * 2,
+  EnviarEnlaces = Reaccionar * 2,
+  ConectarseACanalesDeVoz = EnviarEnlaces * 2
+}
