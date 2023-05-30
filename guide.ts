@@ -754,3 +754,16 @@ export type Product = {
 //import { Product} from "/guide.ts" sintaxis para importar el tipo Product a un nuevo archivo.
 
 //EXPORT DEFAULT
+//Que es? Export default se utiliza cuando queremos que un archivo exporte un unico bloque de codigo, por ejemplo tenemos el archivo registerUser.ts que lo unico que posee dentro es la funcion registerUser(), y queremos utilizarla en otro archivo de la aplicacion, en este caso la manera correcta de exportarlo seria Export Default function registerUser(){} ya que solo vamos a necesitar ese codigo de ese archivo.
+//IMPORT DEFAULT
+//Como se aplica? Para importar un bloque de codigo que fue exportado como default, la sintaxis que debemos utilizar es la siguiente import nombre-de-lo-que-queremos-importar from "/archivo-donde-se-encuentra" de esta forma para importar de forma default la funcion registerUser seria de esta forma: import registration from "./registerUser.ts".
+
+//Podemos exportar defaults y exports comunes asi como tambien importar defaults o imports comunes en un mismo archivo, ej: 
+//export default function ejemplo(){}
+//export type Precio = number
+//import ejemplo, {Precio} from "./ejemplo.ts"
+
+//Tambien podemos importas todos los bloques de codigo que se exportan de un archivo utilizando *, ej:
+//import * as all from './ejemplo.ts'
+//Este import traera en un objeto llamado all, todo lo exportado en ejemplo.ts 
+//ADVERTENCIA!! este metodo no importa types. 
