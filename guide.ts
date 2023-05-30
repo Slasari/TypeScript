@@ -247,3 +247,19 @@ class VehiculoMaritimo extends Vehiculo {
 let vehiculo = new VehiculoTerreste("Yamaja", "Moto")
 vehiculo.moverse()
 
+
+//TIPOS ALIAS
+
+//Que son? Los tipos alias permiten utilizar una variable para tomar el valor de un tipo de dato o varios tipos de datos. ej:
+
+type LoginCredentials = {
+    username: string,
+    password: string
+}
+
+function login(data: LoginCredentials){
+
+}
+
+//Aca tenemos un nuevo "tipo de dato" (tipo alias) llamado LoginCredentials que es un objeto que posee 2 propiedades, username y password
+//Esto sirve principalmente para que el codigo sea mucho mas escalable, ya que una vez que nuestra funcion de login necesite de alguna otra propiedad, podamos agregarla en el tipo de dato LoginCredentials y asi no debamos agregarla en cada lugar donde estamos utilizando la funcion.
