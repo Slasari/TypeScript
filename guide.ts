@@ -298,6 +298,32 @@ function convertir(valor: string | number){  //la funcion convertir recibe el pa
 
     //Utilizamos typeof para saber de que tipo es el valor que nos esta llegando, y asi poder tomar las medidas para ese tipo.
 }
-
 convertir("hola");
 convertir(150);
+
+
+//Uniones discriminantes basicamente todos los tipos alias poseen una propiedad en comun "tipo" y dependiendo del valor de esa propiedad podemos decidir si ejecutar la accion a o ejecutar la accion b. ej:
+
+type OperacionSuma = {
+    sumando1 : number;
+    sumando2 : number;
+    tipo : 'sumar'
+}
+
+type OperacionMultiplicar = {
+    operando1 : number;
+    operando2 : number;
+    tipo : 'multiplicar'
+}
+
+type Operacion = OperacionSuma | OperacionMultiplicar
+
+function operar(o: Operacion) { // el argumento "o" va a ser una Operacion, es decir que puede ser OperacionSuma u OperacionMultiplicar
+    if (o.tipo == 'sumar'){    // para saber que tipo de Operacion esta entrando en la funcion, verificamos el valor de "tipo"
+       let resultado = o.sumando1 + o.sumando2;
+       return resultado;
+    } else if (o.tipo == 'multiplicar'){
+        let resultado = o.operando1 * o.operando2
+        return resultado;
+    }
+}
