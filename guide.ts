@@ -711,4 +711,20 @@ let x = subir(post);
 //RESTRICCIONES EN GENERICOS
 //(Linea 682) Al agregar la interfaz Post y hacer que nota sea una extension de esta interfaz, estamos declarando que una variable de tipo Nota ahora debera poseer un id (proveniente de Post) y un message que debe ser un string (Proveniente de Nota) de esta manera le estamos diciendo a TypeScript que si la variable "post" no cumple con las condiciones que debe tener para ser considerada una Nota, entonces no ejecutara la funcion subir.
 
+//UTILIDAD
+
+//Partial<Type>
+//Que es? Es una utilidad que permite crear interfaces donde todas sus propiedades son optativas, ej:
+
+interface TODO {
+  title: string;
+  description: string;
+}
+
+let t: Partial<TODO> = {
+  //Como vemos 't' es de tipo TODO, pero no nos da un error por la falta de la propiedad description, ya que sabe que t es un partial de TODO, por lo tanto sus propiedades no son obligatorias.
+  title: "Compra",
+};
+
+//Para mas informacion sobre las utilidades de TypeScript leer la doc.
 
