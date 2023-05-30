@@ -658,4 +658,21 @@ let payload2: Respuesta<boolean> = {
 };
 
 //GENERICOS 2
+//Podemos agregar mas de un valor generico a nuestra interfaz generica.
 
+interface Respuesta2<T, U> {
+  //Es importante respetar el orden en el que se envian los parametros, como si fuera una funcion.
+  type: string;
+  success: boolean;
+  message: T;
+  whatever: U;
+}
+
+let payload3: Respuesta2<string, number> = {
+  //El primer valor enviado sera considerado como T (lo tomara mesasge) y el segundo valor sera consderado como U (lo tomara whatever)
+  type: "get",
+  success: true,
+  message: "hola",
+  whatever: 50,
+};
+//IMPORTANTE!! se recomienda no utilizar letras sueltas para declarar genericos, ya que esto puede confundir a largo plazo, en este caso podriamos reemplazar <T> por <Message> y <U> por <Something> asi quedaria mas claro que representa cada valor.
